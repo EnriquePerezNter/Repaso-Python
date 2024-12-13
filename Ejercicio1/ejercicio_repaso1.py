@@ -5,8 +5,8 @@ import json
 lista_empleados = []
 
 # Agregar Empleado
-def agregarEmpleado():
-    print(f'Introduce los datos del empleado:')
+def agregar_empleado():
+    print('Introduce los datos del empleado:')
     id = int(input('Id del Empleado:'))
     nombre = input('Nombre del empleado:')
     edad = int(input('Edad del Empleado:'))
@@ -18,7 +18,7 @@ def agregarEmpleado():
     print('El empleado ha sido añadido correctamente')
 
 # Buscar Empleado por id
-def buscarEmpleadoPorId():
+def buscar_empleado_por_id():
     id = int(input('Introduce el Id del empleado que quieres buscar:'))
     encontrado = False  
     for empleado in lista_empleados:
@@ -31,7 +31,7 @@ def buscarEmpleadoPorId():
         print(f'No se ha encontrado ningún empleado con el Id: {id}') 
 
 # Eliminar empleados
-def eliminarEmpleadoPorId():
+def eliminar_empleado_por_id():
     id = int(input('Introduce el Id del empleado que quieres eliminar:'))
     encontrado = False  
     for empleado in lista_empleados:
@@ -44,7 +44,7 @@ def eliminarEmpleadoPorId():
         print(f'No se ha encontrado ningún empleado con el Id: {id}') 
 
 # Mostrar empleados
-def mostrarEmpleados():
+def mostrar_empleados():
     if lista_empleados:
         print('Estos son todos los empleados disponibles:')
         for empleado in lista_empleados:
@@ -53,7 +53,7 @@ def mostrarEmpleados():
         print('No hay ningún empleado registrado')
 
 # Guardar empleados en un archivo JSON
-def guardarEmpleadosEnArchivo():
+def guardar_empleados_en_archivo():
     if lista_empleados:
         with open('empleados.json', 'w') as archivo_empleado:
             json.dump(lista_empleados, archivo_empleado, indent=4)
@@ -62,7 +62,7 @@ def guardarEmpleadosEnArchivo():
         print('No hay ningún empleado registrado')
 
 # Cargar empleados desde un archivo JSON
-def cargarEmpleadosDesdeArchivo():
+def cargar_empleados_desde_archivo():
     try:
         with open('empleados.json', 'r') as archivo_empleado:
             lista_empleados.extend(json.load(archivo_empleado))
@@ -71,8 +71,8 @@ def cargarEmpleadosDesdeArchivo():
         print("El archivo 'empleados.json' no existe.")
 
 # Menú
-def seleccionOpcion():
-    print(f'1. Agregar empleado  \n2. Buscar empleado por ID  \n3. Eliminar empleado por ID  \n4. Mostrar todos los empleados  \n5. Guardar empleados en un archivo  \n6. Cargar empleados desde un archivo  \n7. Salir')
+def seleccion_opcion():
+    print('1. Agregar empleado  \n2. Buscar empleado por ID  \n3. Eliminar empleado por ID  \n4. Mostrar todos los empleados  \n5. Guardar empleados en un archivo  \n6. Cargar empleados desde un archivo  \n7. Salir')
     while True:
         try:
             opcion = int(input('Selecciona una opción válida (1-7): '))
@@ -81,21 +81,21 @@ def seleccionOpcion():
                 continue
             
             if opcion == 1:
-                agregarEmpleado()
+                agregar_empleado()
             elif opcion == 2:
-                buscarEmpleadoPorId()
+                buscar_empleado_por_id()
             elif opcion == 3:
-                eliminarEmpleadoPorId()
+                eliminar_empleado_por_id()
             elif opcion == 4:
-                mostrarEmpleados()
+                mostrar_empleados()
             elif opcion == 5:
-                guardarEmpleadosEnArchivo()
+                guardar_empleados_en_archivo()
             elif opcion == 6:
-                cargarEmpleadosDesdeArchivo()
+                cargar_empleados_desde_archivo()
             elif opcion == 7:
                 print('Salida Completada')
                 break 
         except ValueError:
             print('Por favor, ingresa un número entero.')
 
-seleccionOpcion()
+seleccion_opcion()
